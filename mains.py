@@ -1,9 +1,9 @@
 import sys
-import time
-
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QRadioButton, QLabel
 from PyQt5.uic import loadUi
+import sqlite3
+
 class login(QDialog):
     def __init__(self):
         super(login,self).__init__()
@@ -21,7 +21,22 @@ class login(QDialog):
     def loginfunction(self):
         email = self.Email.text()
         password = self.Pass.text()
-        print(f"Successfully logged with email: {email} and Password: {password}")
+
+        conn = sqlite3.connect('tut.db')
+        cursor = conn.cursor()
+        cursor.execute("SELECT email,password FROM student")
+        val = cursor.fetchall()
+
+        if len(val) >= 1:
+            for x in val:
+                if email in x[0] and password in x[1]:
+                    print("welcome ")
+                else:
+                    pass
+        else:
+            print('No user Found')
+
+
 
     def gotocreat(self):
         creatacc = creatAccount()
@@ -34,18 +49,11 @@ class creatAccount(QDialog):
         loadUi("creatAccount.ui",self)
         widget.setFixedWidth(480)
         widget.setFixedHeight(620)
-
         self.creatAcc.clicked.connect(self.creatAccFun)
         self.Pass_2.setEchoMode(QtWidgets.QLineEdit.Password)
         self.Pass_3.setEchoMode(QtWidgets.QLineEdit.Password)
         self.backtologin.clicked.connect(self.gotoback)
-        self.b1 = QRadioButton("Male")
         self.creatAcc.clicked.connect(sys.exit)
-
-    def onClicked(self):
-        radioButton = self.sender()
-        if radioButton.isChecked():
-            print("Country is %s" % (radioButton.country))
 
     def gotoback(self):
         creatacc = login()
@@ -58,11 +66,16 @@ class creatAccount(QDialog):
         email = self.Email.text()
         if self.Pass_2.text()==self.Pass_3.text():
             Pass = self.Pass_2.text()
-            print("seccsucfly created! \nfirstName:",firstname,
-                  "\nFamilyname:",familyname,
-                  "\nemail:",email,
-                  "\npassword:",Pass)
+            conn = sqlite3.connect("tut.db")
+            c = conn.cursor()
+            c.execute("CREATE TABLE IF NOT EXISTS student(email TEXT,firstname TEXT,familyname TEXT,password TEXT)")
+            c.execute("INSERT INTO student(email,firstname,familyname,password) VALUES (?, ?, ?, ?)", (email, firstname, familyname, Pass))
+            conn.commit()
+            c.close()
+            conn.close()
+            print("the value is inserted successfuly!")
         else:print("failed signup!!!")
+
 
 
 
@@ -76,3 +89,29 @@ widget.show()
 app.exec()
 
 
+
+
+"""
+#-->data base connection
+conn = sqlite3.connect("tut.db")
+c = conn.cursor()
+
+def creatTable():
+    c.execute("CREATE TABLE IF NOT EXISTS student(name TEXT,age TEXT,password TEXT)")
+
+def data_entery():
+    x=str(input("here"))
+    y=str(input("here2"))
+    z=str(input("here3"))
+    c.execute("INSERT INTO student(name,age,password) VALUES (?, ?, ?)",(x,y,z))
+    conn.commit()
+    c.close()
+    conn.close()
+def read_from_db():
+    c.execute("SELECT * FROM student")
+
+
+creatTable()
+data_entery()
+
+"""
