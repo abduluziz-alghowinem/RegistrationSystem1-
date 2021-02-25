@@ -146,6 +146,23 @@ border-style: dotted;</string>
     <string>Sing up</string>
    </property>
   </widget>
+  <widget class="QLabel" name="invalidLogin">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>430</y>
+     <width>151</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(238, 74, 38);</string>
+   </property>
+   <property name="text">
+    <string>INVALID PASSWORD!</string>
+   </property>
+  </widget>
  </widget>
  <tabstops>
   <tabstop>Email</tabstop>

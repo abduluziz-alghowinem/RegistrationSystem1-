@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QRadioButton, QLabel
 from PyQt5.uic import loadUi
 import sqlite3
+import time
 
 class login(QDialog):
     def __init__(self):
@@ -13,31 +14,26 @@ class login(QDialog):
         self.setWindowTitle("Close Window")
         self.Pass.setEchoMode(QtWidgets.QLineEdit.Password)
         self.signup.clicked.connect(self.gotocreat)
-        self.LoginButton.clicked.connect(sys.exit)
+        self.invalidLogin.setVisible(False)
 
-
-
+    def setButtonEnabled(self):
+        self.LoginButton.setEnabled(False)
 
     def loginfunction(self):
         email = self.Email.text()
         password = self.Pass.text()
-
         conn = sqlite3.connect('tut.db')
         cursor = conn.cursor()
         cursor.execute("SELECT email,password FROM student")
         val = cursor.fetchall()
-
         if len(val) >= 1:
             for x in val:
                 if email in x[0] and password in x[1]:
-                    print("welcome ")
+                    print("welcome")
                 else:
                     pass
         else:
-            print('No user Found')
-
-
-
+            self.invalidLogin.setVisible(False)
     def gotocreat(self):
         creatacc = creatAccount()
         widget.addWidget(creatacc)
@@ -49,11 +45,12 @@ class creatAccount(QDialog):
         loadUi("creatAccount.ui",self)
         widget.setFixedWidth(480)
         widget.setFixedHeight(620)
+        self.invalidLabel.setVisible(False)
+        self.invalidLabel_2.setVisible(False)
         self.creatAcc.clicked.connect(self.creatAccFun)
         self.Pass_2.setEchoMode(QtWidgets.QLineEdit.Password)
         self.Pass_3.setEchoMode(QtWidgets.QLineEdit.Password)
         self.backtologin.clicked.connect(self.gotoback)
-        self.creatAcc.clicked.connect(sys.exit)
 
     def gotoback(self):
         creatacc = login()
@@ -74,10 +71,11 @@ class creatAccount(QDialog):
             c.close()
             conn.close()
             print("the value is inserted successfuly!")
-        else:print("failed signup!!!")
+            self.gotoback()
 
-
-
+        else:
+            self.invalidLabel.setVisible(True)
+            self.invalidLabel_2.setVisible(True)
 
 app=QApplication(sys.argv)
 mainWin=login()
