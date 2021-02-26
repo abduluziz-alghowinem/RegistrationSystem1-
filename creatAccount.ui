@@ -293,35 +293,37 @@ border-style: dotted;</string>
     <string>❮</string>
    </property>
   </widget>
-  <widget class="QLabel" name="invalidLabel">
+  <widget class="QPushButton" name="invalidLabel">
    <property name="geometry">
     <rect>
      <x>140</x>
      <y>470</y>
-     <width>131</width>
-     <height>16</height>
+     <width>121</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(238, 74, 38);</string>
+color: rgb(238, 74, 38);
+border-style: dotted;</string>
    </property>
    <property name="text">
     <string>INVALID PASSWORD!</string>
    </property>
   </widget>
-  <widget class="QLabel" name="invalidLabel_2">
+  <widget class="QPushButton" name="invalidLabel_2">
    <property name="geometry">
     <rect>
      <x>140</x>
      <y>400</y>
-     <width>131</width>
-     <height>16</height>
+     <width>121</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(238, 74, 38);</string>
+color: rgb(238, 74, 38);
+border-style: dotted;</string>
    </property>
    <property name="text">
     <string>INVALID PASSWORD!</string>
