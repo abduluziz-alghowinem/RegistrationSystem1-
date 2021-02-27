@@ -328,30 +328,6 @@ border-style: dotted;}
     <string>INVALID PASSWORD!</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="invalidLabel_2">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>400</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-font: 75 10pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(238, 74, 38);
-border-style: dotted;
-}
-QPushButton:hover{font: 75 10pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(241, 241, 241);
-border-style: dotted;}
-</string>
-   </property>
-   <property name="text">
-    <string>INVALID PASSWORD!</string>
-   </property>
-  </widget>
  </widget>
  <tabstops>
   <tabstop>firstName</tabstop>

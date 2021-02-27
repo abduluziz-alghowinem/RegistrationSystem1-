@@ -116,12 +116,18 @@ color:rgb(255, 201, 126);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 128, 128);
+    <string notr="true">QPushButton{background-color: rgb(0, 128, 128);
 font: 25 22pt &quot;Microsoft YaHei UI Light&quot;;
 color: rgb(222, 184, 135);
 border-style: dotted;
 gridline-color: rgb(255, 255, 255);
-alternate-background-color: rgb(255, 255, 255);</string>
+alternate-background-color: rgb(255, 255, 255);}
+QPushButton:hover{background-color:rgb(241, 241, 241);
+font: 25 22pt &quot;Microsoft YaHei UI Light&quot;;
+color: rgb(222, 184, 135);
+border-style: dotted;
+gridline-color: rgb(255, 255, 255);
+alternate-background-color: rgb(255, 255, 255);}</string>
    </property>
    <property name="text">
     <string>Sign in</string>
@@ -137,27 +143,41 @@ alternate-background-color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 128, 128);
+    <string notr="true">QPushButton{background-color: rgb(0, 128, 128);
 font: 25 22pt &quot;Microsoft YaHei UI Light&quot;;
 color: rgb(222, 184, 135);
-border-style: dotted;</string>
+border-style: dotted;
+gridline-color: rgb(255, 255, 255);
+alternate-background-color: rgb(255, 255, 255);}
+QPushButton:hover{background-color:rgb(241, 241, 241);
+font: 25 22pt &quot;Microsoft YaHei UI Light&quot;;
+color: rgb(222, 184, 135);
+border-style: dotted;
+gridline-color: rgb(255, 255, 255);
+alternate-background-color: rgb(255, 255, 255);}</string>
    </property>
    <property name="text">
     <string>Sing up</string>
    </property>
   </widget>
-  <widget class="QLabel" name="invalidLogin">
+  <widget class="QPushButton" name="invalidLabel_3">
    <property name="geometry">
     <rect>
      <x>130</x>
      <y>430</y>
-     <width>151</width>
-     <height>16</height>
+     <width>141</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(238, 74, 38);</string>
+    <string notr="true">QPushButton{
+font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(238, 74, 38);
+border-style: dotted;}
+QPushButton:Hover{
+font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+color:  rgb(241, 241, 241);
+border-style: dotted;}</string>
    </property>
    <property name="text">
     <string>INVALID PASSWORD!</string>

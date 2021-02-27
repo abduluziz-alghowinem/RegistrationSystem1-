@@ -14,10 +14,12 @@ class login(QDialog):
         self.LoginButton.clicked.connect(self.loginfunction)
         self.Pass.setEchoMode(QtWidgets.QLineEdit.Password)
         self.signup.clicked.connect(self.gotocreat)
-        self.invalidLogin.setVisible(False)
-
+        self.invalidLabel_3.setVisible(False)
+        #if self.invalidLabel_3.isVisible():
+        self.invalidLabel_3.clicked.connect(self.loginMessage)
 
     def loginfunction(self):
+
             email = self.Email.text()
             password = self.Pass.text()
 
@@ -26,22 +28,37 @@ class login(QDialog):
 
             cursor.execute("SELECT email,password FROM student")
             val = cursor.fetchall()
-
-            if len(val) >= 1:
-                for x in val:
-                    if email in x[0] and password in x[1]:
-                        print("welcome ")
-                    else:
-                        pass
+            for x in val:
+                if ((email in x[0] and email !='')and(password in x[1] and password != '')):
+                    print("welcome")
+                    self.goWelcome()
+                    break
+                else:
+                    pass
             else:
+                self.invalidLabel_3.setVisible(True)
                 print('No user Found')
+
+    def loginMessage(self):
+        creatacc = message2()
+        widget.addWidget(creatacc)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+        
+
+    def goWelcome(self):
+        creatacc = WELCOME()
+        widget.addWidget(creatacc)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
 
     def gotocreat(self):
         creatacc = creatAccount()
         widget.addWidget(creatacc)
         widget.setCurrentIndex(widget.currentIndex()+1)
 
+
+
 class creatAccount(QDialog):
+    gender = 'Male'
     def __init__(self):
         super(creatAccount,self).__init__()
         loadUi("creatAccount.ui",self)
@@ -55,8 +72,12 @@ class creatAccount(QDialog):
         self.backtologin.clicked.connect(self.gotoback)
         self.invalidLabel.clicked.connect(self.popMessage)
         self.invalidLabel_2.clicked.connect(self.popMessage)
+        self.creatAcc.clicked.connect(self.creatAccFun)
 
     def creatAccFun(self):
+        gender = 'Male'
+        if self.Female.isChecked():
+            gender = 'Female'
         firstname = (self.firstName.text()).lower()
         familyname = (self.familyName.text()).lower()
         email = (self.Email.text()).lower()
@@ -64,16 +85,18 @@ class creatAccount(QDialog):
             Pass = self.Pass_2.text()
             conn = sqlite3.connect("tut.db")
             c = conn.cursor()
-            c.execute("CREATE TABLE IF NOT EXISTS student(email TEXT,firstname TEXT,familyname TEXT,password TEXT)")
-            c.execute("INSERT INTO student(email,firstname,familyname,password) VALUES (?, ?, ?, ?)", (email, firstname, familyname, Pass))
+            c.execute("CREATE TABLE IF NOT EXISTS student(email TEXT,firstname TEXT,familyname TEXT,password TEXT,gender TEXT)")
+            c.execute("INSERT INTO student(email,firstname,familyname,password,gender) VALUES (?, ?, ?, ?, ?)", (email, firstname, familyname, Pass,gender))
             conn.commit()
             c.close()
             conn.close()
             print("the value is inserted successfuly!")
+            self.checkGender()
             self.gotoback()
         else:
             self.invalidLabel.setVisible(True)
             self.invalidLabel_2.setVisible(True)
+
     def passCheck(self):
         password = self.Pass_2.text()
         if re.search(r'[A-Z]', password) and re.search(r'[a-z]', password) and re.search(r'[0-9]', password) and (self.Pass_2.text()==self.Pass_3.text()) and ((4<len(self.Pass_2.text())<12) and (4<len(self.Pass_3.text())<12)):
@@ -86,7 +109,6 @@ class creatAccount(QDialog):
         creatacc = login()
         widget.addWidget(creatacc)
         widget.setCurrentIndex(widget.currentIndex() - 1)
-
 
     def popMessage(self):
         msg = message()
@@ -104,6 +126,25 @@ class message(QDialog):
         g = creatAccount()
         widget.addWidget(g)
         widget.setCurrentIndex(widget.currentIndex() - 1)
+class message2(QDialog):
+    def __init__(self):
+        super(message2,self).__init__()
+        loadUi("message2.ui",self)
+        widget.setFixedWidth(480)
+        widget.setFixedHeight(620)
+        self.backtocreat.clicked.connect(self.gotoback2)
+    def gotoback2(self):
+        g = login()
+        widget.addWidget(g)
+        widget.setCurrentIndex(widget.currentIndex() - 1)
+
+class WELCOME(QDialog):
+    def __init__(self):
+        super(WELCOME,self).__init__()
+        loadUi("welcome.ui",self)
+        widget.setFixedWidth(480)
+        widget.setFixedHeight(620)
+
 
 app=QApplication(sys.argv)
 mainWin=login()
