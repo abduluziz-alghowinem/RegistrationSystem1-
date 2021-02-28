@@ -100,10 +100,18 @@ p, li { white-space: pre-wrap; }
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 128, 128);
+    <string notr="true">QPushButton{background-color: rgb(0, 128, 128);
 font: 25 22pt &quot;Microsoft YaHei UI Light&quot;;
 color: rgb(222, 184, 135);
-border-style: dotted;</string>
+border-style: dotted;
+gridline-color: rgb(255, 255, 255);
+alternate-background-color: rgb(255, 255, 255);}
+QPushButton:hover{background-color:rgb(241, 241, 241);
+font: 25 22pt &quot;Microsoft YaHei UI Light&quot;;
+color: rgb(222, 184, 135);
+border-style: dotted;
+gridline-color: rgb(255, 255, 255);
+alternate-background-color: rgb(255, 255, 255);}</string>
    </property>
    <property name="text">
     <string>❮</string>

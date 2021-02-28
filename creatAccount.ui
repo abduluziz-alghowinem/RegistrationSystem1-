@@ -62,8 +62,14 @@ color:rgb(255, 201, 126);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size:15pt;
-color: rgb(255, 255, 255);</string>
+    <string notr="true">font:16pt &quot;Microsoft JhengHei UI Light&quot;;
+color: rgb(255, 255, 255);
+
+
+background:transparent;
+border:none;
+color:rgb(255, 255, 255);;
+border-bottom:1px solid rgb(96, 118, 129);</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="firstName">
@@ -82,12 +88,14 @@ color: rgb(255, 255, 255);</string>
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size:15pt;
+    <string notr="true">font:16pt &quot;Microsoft JhengHei UI Light&quot;;
 color: rgb(255, 255, 255);
 
-t{
-placeholder=&quot;Country Name&quot;;
-}</string>
+
+background:transparent;
+border:none;
+color:rgb(255, 255, 255);;
+border-bottom:1px solid rgb(96, 118, 129);</string>
    </property>
    <property name="text">
     <string/>
@@ -146,8 +154,14 @@ border-style: dotted;}
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size:15pt;
-color: rgb(255, 255, 255);</string>
+    <string notr="true">font:16pt &quot;Microsoft JhengHei UI Light&quot;;
+color: rgb(255, 255, 255);
+
+
+background:transparent;
+border:none;
+color:rgb(255, 255, 255);;
+border-bottom:1px solid rgb(96, 118, 129);</string>
    </property>
    <property name="text">
     <string/>
@@ -187,8 +201,14 @@ color:rgb(255, 201, 126);</string>
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size:15pt;
-color: rgb(255, 255, 255);</string>
+    <string notr="true">font:16pt &quot;Microsoft JhengHei UI Light&quot;;
+color: rgb(255, 255, 255);
+
+
+background:transparent;
+border:none;
+color:rgb(255, 255, 255);;
+border-bottom:1px solid rgb(96, 118, 129);</string>
    </property>
    <property name="text">
     <string/>
@@ -239,8 +259,14 @@ color:rgb(255, 201, 126);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size:15pt;
-color: rgb(255, 255, 255);</string>
+    <string notr="true">font:16pt &quot;Microsoft JhengHei UI Light&quot;;
+color: rgb(255, 255, 255);
+
+
+background:transparent;
+border:none;
+color:rgb(255, 255, 255);;
+border-bottom:1px solid rgb(96, 118, 129);</string>
    </property>
    <property name="text">
     <string/>
@@ -308,7 +334,7 @@ border-style: dotted;}</string>
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>470</y>
+     <y>480</y>
      <width>121</width>
      <height>20</height>
     </rect>
@@ -332,7 +358,7 @@ border-style: dotted;}
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>400</y>
+     <y>410</y>
      <width>121</width>
      <height>20</height>
     </rect>

@@ -1,4 +1,6 @@
 import sys
+
+import layout as layout
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QRadioButton, QLabel
 from PyQt5.uic import loadUi
@@ -10,28 +12,26 @@ class login(QDialog):
     def __init__(self):
         super(login,self).__init__()
         loadUi("login.ui",self)
-        self.setWindowTitle("Close")
+        i =0
         self.LoginButton.clicked.connect(self.loginfunction)
         self.Pass.setEchoMode(QtWidgets.QLineEdit.Password)
         self.signup.clicked.connect(self.gotocreat)
         self.invalidLabel_3.setVisible(False)
-        #if self.invalidLabel_3.isVisible():
-        self.invalidLabel_3.clicked.connect(self.loginMessage)
+        #self.invalidLabel_3.clicked.connect(self.invalidMesege)
 
     def loginfunction(self):
 
             email = self.Email.text()
             password = self.Pass.text()
-
             conn = sqlite3.connect('tut.db')
             cursor = conn.cursor()
-
             cursor.execute("SELECT email,password FROM student")
             val = cursor.fetchall()
             for x in val:
                 if ((email in x[0] and email !='')and(password in x[1] and password != '')):
                     print("welcome")
                     self.goWelcome()
+
                     break
                 else:
                     pass
@@ -39,23 +39,26 @@ class login(QDialog):
                 self.invalidLabel_3.setVisible(True)
                 print('No user Found')
 
-    def loginMessage(self):
-        creatacc = message2()
-        widget.addWidget(creatacc)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
-        
+
+
+    #>>>>>>>>>>>>>>>>>>>
+    def invalidMesege(self):
+            loadUi("message2.ui", self)
+            s = QApplication(sys.argv)
+            mainWin = message2()
+
+
 
     def goWelcome(self):
         creatacc = WELCOME()
         widget.addWidget(creatacc)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
-
+        widget.currentIndex()+1
+    #>>>>>>>>>>>>>>>>>>>
     def gotocreat(self):
         creatacc = creatAccount()
         widget.addWidget(creatacc)
-        widget.setCurrentIndex(widget.currentIndex()+1)
-
-
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+        print(widget.currentIndex())
 
 class creatAccount(QDialog):
     gender = 'Male'
@@ -109,11 +112,13 @@ class creatAccount(QDialog):
         creatacc = login()
         widget.addWidget(creatacc)
         widget.setCurrentIndex(widget.currentIndex() - 1)
+        print(widget.currentIndex())
 
     def popMessage(self):
         msg = message()
         widget.addWidget(msg)
         widget.setCurrentIndex(widget.currentIndex()+1)
+        print(widget.currentIndex())
 
 class message(QDialog):
     def __init__(self):
@@ -126,6 +131,7 @@ class message(QDialog):
         g = creatAccount()
         widget.addWidget(g)
         widget.setCurrentIndex(widget.currentIndex() - 1)
+        print(widget.currentIndex())
 class message2(QDialog):
     def __init__(self):
         super(message2,self).__init__()
@@ -134,9 +140,19 @@ class message2(QDialog):
         widget.setFixedHeight(620)
         self.backtocreat.clicked.connect(self.gotoback2)
     def gotoback2(self):
+        """ g = login()
+        layout.removeWidget(widget.currentIndex())
+        widget.currentIndex().deleteLater()
+        widget.currentIndex = None
+        loadUi("login.ui", self)"""
         g = login()
         widget.addWidget(g)
+
         widget.setCurrentIndex(widget.currentIndex() - 1)
+        widget.setCurrentIndex = 0
+        print(widget.currentIndex())
+
+
 
 class WELCOME(QDialog):
     def __init__(self):
@@ -154,10 +170,6 @@ widget.setFixedWidth(480)
 widget.setFixedHeight(620)
 widget.show()
 app.exec()
-
-
-
-
 
 """
 #-->data base connection
