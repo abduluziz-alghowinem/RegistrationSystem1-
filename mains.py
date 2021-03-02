@@ -1,5 +1,4 @@
 import sys
-
 import layout as layout
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QRadioButton, QLabel
@@ -7,20 +6,19 @@ from PyQt5.uic import loadUi
 import sqlite3
 import re
 import time
-
 class login(QDialog):
+
     def __init__(self):
         super(login,self).__init__()
         loadUi("login.ui",self)
-        i =0
         self.LoginButton.clicked.connect(self.loginfunction)
         self.Pass.setEchoMode(QtWidgets.QLineEdit.Password)
         self.signup.clicked.connect(self.gotocreat)
         self.invalidLabel_3.setVisible(False)
         #self.invalidLabel_3.clicked.connect(self.invalidMesege)
 
-    def loginfunction(self):
 
+    def loginfunction(self):
             email = self.Email.text()
             password = self.Pass.text()
             conn = sqlite3.connect('tut.db')
@@ -31,7 +29,6 @@ class login(QDialog):
                 if ((email in x[0] and email !='')and(password in x[1] and password != '')):
                     print("welcome")
                     self.goWelcome()
-
                     break
                 else:
                     pass
@@ -39,25 +36,19 @@ class login(QDialog):
                 self.invalidLabel_3.setVisible(True)
                 print('No user Found')
 
-
-
     #>>>>>>>>>>>>>>>>>>>
-    def invalidMesege(self):
-            loadUi("message2.ui", self)
-            s = QApplication(sys.argv)
-            mainWin = message2()
-
-
+    """def invalidMesege(self):
+        pass"""
 
     def goWelcome(self):
         creatacc = WELCOME()
         widget.addWidget(creatacc)
-        widget.currentIndex()+1
+        widget.setCurrentIndex(widget.currentIndex()+1)
     #>>>>>>>>>>>>>>>>>>>
     def gotocreat(self):
         creatacc = creatAccount()
         widget.addWidget(creatacc)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        widget.setCurrentIndex(widget.currentIndex()+1)
         print(widget.currentIndex())
 
 class creatAccount(QDialog):
@@ -94,7 +85,6 @@ class creatAccount(QDialog):
             c.close()
             conn.close()
             print("the value is inserted successfuly!")
-            self.checkGender()
             self.gotoback()
         else:
             self.invalidLabel.setVisible(True)
