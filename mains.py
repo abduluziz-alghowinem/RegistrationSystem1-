@@ -7,15 +7,20 @@ import sqlite3
 import re
 import time
 class login(QDialog):
-
+    global d
+    d = [0]
     def __init__(self):
         super(login,self).__init__()
         loadUi("login.ui",self)
+
         self.LoginButton.clicked.connect(self.loginfunction)
         self.Pass.setEchoMode(QtWidgets.QLineEdit.Password)
         self.signup.clicked.connect(self.gotocreat)
         self.invalidLabel_3.setVisible(False)
-        #self.invalidLabel_3.clicked.connect(self.invalidMesege)
+
+        timer = ['30','29','28','27','26','25','24','23','22','21','20','19','18','17','16','15','14','13','12','11','10','9','8','7','6','5','4','3','2','1','0']
+       #for x in timer.:
+       #    print(timer[x])
 
 
     def loginfunction(self):
@@ -35,11 +40,21 @@ class login(QDialog):
             else:
                 self.invalidLabel_3.setVisible(True)
                 print('No user Found')
+                d[0] = d[0] + 1
+                print(d[0])
+                if d[0] % 3 == 0:
+                    print("hola")
+                    self.sleepButton()
+
 
     #>>>>>>>>>>>>>>>>>>>
     """def invalidMesege(self):
         pass"""
-
+    def sleepButton(self):
+        self.LoginButton.setEnabled(False)
+        time.sleep(10)
+        self.LoginButton.setEnabled(True)
+        print('time finish')
     def goWelcome(self):
         creatacc = WELCOME()
         widget.addWidget(creatacc)
@@ -126,9 +141,8 @@ class message2(QDialog):
     def __init__(self):
         super(message2,self).__init__()
         loadUi("message2.ui",self)
-        widget.setFixedWidth(480)
-        widget.setFixedHeight(620)
         self.backtocreat.clicked.connect(self.gotoback2)
+
     def gotoback2(self):
         """ g = login()
         layout.removeWidget(widget.currentIndex())
@@ -142,15 +156,12 @@ class message2(QDialog):
         widget.setCurrentIndex = 0
         print(widget.currentIndex())
 
-
-
 class WELCOME(QDialog):
     def __init__(self):
         super(WELCOME,self).__init__()
         loadUi("welcome.ui",self)
         widget.setFixedWidth(480)
         widget.setFixedHeight(620)
-
 
 app=QApplication(sys.argv)
 mainWin=login()
@@ -183,5 +194,4 @@ def read_from_db():
 
 creatTable()
 data_entery()
-
 """
