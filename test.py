@@ -1,10 +1,9 @@
 import time
-def contdown(t):
-    while t>0:
-        print(t)
-        t-=1
+def countdown(start):
+    while start > 0:
+        msg = "New year starts in: {} seconds".format(start)
+        print(msg)
         time.sleep(1)
-    print("zeroooo")
-
-string = f"{contdown(10)}"
-
+        start -= 1
+    print(msg)
+countdown(10)

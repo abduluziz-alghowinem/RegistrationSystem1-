@@ -1,4 +1,6 @@
 import sys
+from threading import Timer
+
 import layout as layout
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QRadioButton, QLabel
@@ -17,10 +19,7 @@ class login(QDialog):
         self.Pass.setEchoMode(QtWidgets.QLineEdit.Password)
         self.signup.clicked.connect(self.gotocreat)
         self.invalidLabel_3.setVisible(False)
-
-        timer = ['30','29','28','27','26','25','24','23','22','21','20','19','18','17','16','15','14','13','12','11','10','9','8','7','6','5','4','3','2','1','0']
-       #for x in timer.:
-       #    print(timer[x])
+        
 
 
     def loginfunction(self):
@@ -50,11 +49,13 @@ class login(QDialog):
     #>>>>>>>>>>>>>>>>>>>
     """def invalidMesege(self):
         pass"""
+
     def sleepButton(self):
         self.LoginButton.setEnabled(False)
-        time.sleep(10)
+        time.sleep(5)
         self.LoginButton.setEnabled(True)
         print('time finish')
+
     def goWelcome(self):
         creatacc = WELCOME()
         widget.addWidget(creatacc)
