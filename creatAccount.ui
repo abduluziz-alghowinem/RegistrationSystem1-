@@ -261,7 +261,7 @@ border-style: dotted;}</string>
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>480</y>
+     <y>470</y>
      <width>121</width>
      <height>20</height>
     </rect>
@@ -285,7 +285,7 @@ border-style: dotted;}
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>410</y>
+     <y>400</y>
      <width>121</width>
      <height>20</height>
     </rect>
@@ -305,6 +305,68 @@ border-style: dotted;}
     <string>INVALID PASSWORD!</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="invalidfirstname">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>190</y>
+     <width>201</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(238, 74, 38);
+border-style: dotted;
+}
+QPushButton:hover{font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(241, 241, 241);
+border-style: dotted;}
+</string>
+   </property>
+   <property name="text">
+    <string>First Name Must Be 3-15 Charchter</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="invalidfamilyname">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>260</y>
+     <width>201</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(238, 74, 38);
+border-style: dotted;
+}
+QPushButton:hover{font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(241, 241, 241);
+border-style: dotted;}
+</string>
+   </property>
+   <property name="text">
+    <string>First Name Must Be 3-15 Charchter</string>
+   </property>
+  </widget>
+  <zorder>invalidfamilyname</zorder>
+  <zorder>invalidfirstname</zorder>
+  <zorder>invalidLabel</zorder>
+  <zorder>invalidLabel_2</zorder>
+  <zorder>label</zorder>
+  <zorder>familyName</zorder>
+  <zorder>firstName</zorder>
+  <zorder>creatAcc</zorder>
+  <zorder>Pass_2</zorder>
+  <zorder>Email</zorder>
+  <zorder>Pass_3</zorder>
+  <zorder>Male</zorder>
+  <zorder>Female</zorder>
+  <zorder>backtologin</zorder>
  </widget>
  <tabstops>
   <tabstop>firstName</tabstop>

@@ -19,7 +19,7 @@ class login(QDialog):
         self.Pass.setEchoMode(QtWidgets.QLineEdit.Password)
         self.signup.clicked.connect(self.gotocreat)
         self.invalidLabel_3.setVisible(False)
-        
+
 
 
     def loginfunction(self):
@@ -83,6 +83,8 @@ class creatAccount(QDialog):
         self.invalidLabel.clicked.connect(self.popMessage)
         self.invalidLabel_2.clicked.connect(self.popMessage)
         self.creatAcc.clicked.connect(self.creatAccFun)
+        self.invalidfirstname.setVisible(False)
+        self.invalidfamilyname.setVisible(False)
 
     def creatAccFun(self):
         gender = 'Male'
@@ -90,6 +92,10 @@ class creatAccount(QDialog):
             gender = 'Female'
         firstname = (self.firstName.text()).lower()
         familyname = (self.familyName.text()).lower()
+        if  3<len(firstname)<12:
+            self.invalidfirstname.setVisible(True)
+        if len(familyname) < 3:
+            self.invalidfamilyname.setVisible(True)
         email = (self.Email.text()).lower()
         if self.passCheck()==True:
             Pass = self.Pass_2.text()
