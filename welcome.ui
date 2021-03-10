@@ -20,7 +20,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>240</y>
+     <y>80</y>
      <width>281</width>
      <height>91</height>
     </rect>
@@ -32,6 +32,55 @@ font:42pt &quot;Microsoft JhengHei UI Light&quot;;
    </property>
    <property name="text">
     <string>WELCOME</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="feedback">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>230</y>
+     <width>361</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font:16pt &quot;Microsoft JhengHei UI Light&quot;;
+color: rgb(255, 255, 255);
+background:transparent;
+border:none;
+color:rgb(255, 255, 255);;
+border-bottom:1px solid rgb(96, 118, 129);
+</string>
+   </property>
+   <property name="placeholderText">
+    <string notr="true">Right Your Feed Back About Us!</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="submit">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>550</y>
+     <width>491</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{background-color: rgb(0, 128, 128);
+font: 25 22pt &quot;Microsoft YaHei UI Light&quot;;
+color: rgb(222, 184, 135);
+border-style: dotted;
+gridline-color: rgb(255, 255, 255);
+alternate-background-color: rgb(255, 255, 255);}
+QPushButton:hover{background-color:rgb(241, 241, 241);
+font: 25 22pt &quot;Microsoft YaHei UI Light&quot;;
+color: rgb(222, 184, 135);
+border-style: dotted;
+gridline-color: rgb(255, 255, 255);
+alternate-background-color: rgb(255, 255, 255);}</string>
+   </property>
+   <property name="text">
+    <string>Submit</string>
    </property>
   </widget>
  </widget>

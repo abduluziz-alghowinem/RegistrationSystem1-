@@ -169,6 +169,19 @@ class WELCOME(QDialog):
         loadUi("welcome.ui",self)
         widget.setFixedWidth(480)
         widget.setFixedHeight(620)
+        self.submit.clicked.connect(self.Submitfunction)
+
+    def Submitfunction(self):
+        comment = self.submit.toPlainText()
+        conn = sqlite3.connect("tut.db")
+        c = conn.cursor()
+        c.execute("CREATE TABLE IF NOT EXISTS feedback(comment TEXT)")
+        c.execute("INSERT INTO feedback(comment) VALUES (?)",(comment))
+        conn.commit()
+        c.close()
+        conn.close()
+        print("message commit successfuly!")
+        self.gotoback()
 
 app=QApplication(sys.argv)
 mainWin=login()
